@@ -1,0 +1,312 @@
+{
+   "destination_addresses" : [
+      "750 Flower St, Los Angeles, CA 90017, USA",
+      "5144012051, Los Angeles, CA 90014, USA",
+      "645 W 5th St, Los Angeles, CA 90071, USA",
+      "865 S Figueroa St, Los Angeles, CA 90017, USA",
+      "411 E 11th St UNIT 105, Los Angeles, CA 90015, USA",
+      "1201 Figueroa Dr, Los Angeles, CA 90015, USA",
+      "Alameda St + Los Angeles St, Los Angeles, CA 90012, USA",
+      "200 N Main St, Los Angeles, CA 90012, USA",
+      "919 S Grand Ave, Los Angeles, CA 90015, USA",
+      "201 W 12th St, Los Angeles, CA 90015, USA",
+      "1933 S Broadway # 704, Los Angeles, CA 90007, USA",
+      "955 E 3rd St, Los Angeles, CA 90013, USA",
+      "110 N Hope St, Los Angeles, CA 90012, USA",
+      "1014 S Grand Ave, Los Angeles, CA 90015, USA",
+      "923 Sunset Blvd, Los Angeles, CA 90012, USA",
+      "300 S Spring St, Los Angeles, CA 90013, USA",
+      "310 N Grand Ave, Los Angeles, CA 90012, USA",
+      "330 1st St, Los Angeles, CA 90012, USA",
+      "201 7th St, Los Angeles, CA 90014, USA",
+      "550 S Hope St # 1100, Los Angeles, CA 90071, USA",
+      "110 S Los Angeles St, Los Angeles, CA 90015, USA",
+      "1115 S Hope St, Los Angeles, CA 90015, USA",
+      "725 S Figueroa St # 1200, Los Angeles, CA 90017, USA",
+      "582 Mateo St, Los Angeles, CA 90013, USA",
+      "699 Imperial St, Los Angeles, CA 90021, USA"
+   ],
+   "origin_addresses" : [ "Washington, DC, USA" ],
+   "rows" : [
+      {
+         "elements" : [
+            {
+               "distance" : {
+                  "text" : "2,634 mi",
+                  "value" : 4239321
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3106571
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,634 mi",
+                  "value" : 4239132
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3106415
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,634 mi",
+                  "value" : 4238766
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3106169
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,635 mi",
+                  "value" : 4239887
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3107016
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,634 mi",
+                  "value" : 4239601
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3106746
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,635 mi",
+                  "value" : 4240639
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3107563
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,633 mi",
+                  "value" : 4236778
+               },
+               "duration" : {
+                  "text" : "35 days 22 hours",
+                  "value" : 3104581
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,633 mi",
+                  "value" : 4237420
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3105119
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,634 mi",
+                  "value" : 4239610
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3106786
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,635 mi",
+                  "value" : 4239837
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3106956
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,635 mi",
+                  "value" : 4240896
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3107767
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,633 mi",
+                  "value" : 4236982
+               },
+               "duration" : {
+                  "text" : "35 days 22 hours",
+                  "value" : 3104764
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,633 mi",
+                  "value" : 4237968
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3105621
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,635 mi",
+                  "value" : 4240942
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3107807
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,633 mi",
+                  "value" : 4237150
+               },
+               "duration" : {
+                  "text" : "35 days 22 hours",
+                  "value" : 3104954
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,633 mi",
+                  "value" : 4237986
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3105546
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,633 mi",
+                  "value" : 4237561
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3105285
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,633 mi",
+                  "value" : 4237522
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3105208
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,634 mi",
+                  "value" : 4238777
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3106152
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,634 mi",
+                  "value" : 4238959
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3106329
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,634 mi",
+                  "value" : 4239193
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3106473
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,635 mi",
+                  "value" : 4240068
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3107128
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,634 mi",
+                  "value" : 4239740
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3106895
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,633 mi",
+                  "value" : 4237739
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3105309
+               },
+               "status" : "OK"
+            },
+            {
+               "distance" : {
+                  "text" : "2,634 mi",
+                  "value" : 4238352
+               },
+               "duration" : {
+                  "text" : "35 days 23 hours",
+                  "value" : 3105731
+               },
+               "status" : "OK"
+            }
+         ]
+      }
+   ],
+   "status" : "OK"
+}

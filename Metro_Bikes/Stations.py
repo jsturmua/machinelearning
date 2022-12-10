@@ -1,27 +1,6 @@
 import requests
 import json
-#import pandas
-
-class Location:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-class Availablebikes:
-    def __init__(self, amount_free_bikes, amount_free_docks, amount_classic_bikes, amount_smart_bikes, amount_electric_bikes, amount_trikes):
-        self.amount_free_bikes = amount_free_bikes
-        self.amount_free_docks = amount_free_docks
-        self.amount_classic_bikes = amount_classic_bikes
-        self.amount_smart_bikes = amount_smart_bikes
-        self.amount_electric_bikes = amount_electric_bikes
-        self.amount_trikes = amount_trikes
-
-class Station:
-    def __init__(self, location, avaivablebikes, name):
-        self.name = name
-        self._location = location
-        self._avaivablebikes = avaivablebikes
-
+import Location, AvailableBikes, Station
 
 class Stations:
     def __init__(self):
@@ -50,6 +29,6 @@ class Stations:
             amount_smart_bikes = object['properties']['smartBikesAvailable']
             amount_electric_bikes = object['properties']['electricBikesAvailable']
             amount_trikes = object['properties']['trikesAvailable']
-            bikesavailable = Availablebikes(amount_free_bikes, amount_free_docks, amount_classic_bikes, amount_smart_bikes, amount_electric_bikes, amount_trikes)
+            bikesavailable = AvailableBikes(amount_free_bikes, amount_free_docks, amount_classic_bikes, amount_smart_bikes, amount_electric_bikes, amount_trikes)
             
             self.stations.append(Station(location, bikesavailable, name))
