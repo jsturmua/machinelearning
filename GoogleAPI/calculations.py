@@ -12,5 +12,9 @@ def calculate_routes(startlocation, stations):
     for station in stations:
         i = i+1
         tempstations.append(station)
-        temp_destination_string = station.name + "[" + station.location.y + ", " + station.location.x + "]"
+        temp_destination_string = "[" + str(station._location.y) + ", " + str(station._location.x) + "]"
         destinations.append(temp_destination_string)
+        if i == 25:
+            matrix = gmaps.distance_matrix(origins, destinations)
+            i = 0
+            tempstations = []
