@@ -1,5 +1,5 @@
 from Metro_Bikes import Stations, Location, Station 
-from GoogleAPI import calculations
+from Distance_Api import calculations
 
 #Get all stations
 stations = Stations.parse_json()

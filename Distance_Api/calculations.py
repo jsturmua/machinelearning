@@ -1,9 +1,7 @@
 import sys
 sys.path.append("/usr/local/lib/python3.8/dist-packages")
 import googlemaps
-from googlemaps.maps import StaticMapMarker
-from googlemaps.maps import StaticMapPath
-from GoogleAPI.Route import Route
+from Distance_Api.Route import Route
 import geopy.distance
 from geopy.geocoders import Nominatim
 import json
