@@ -21,21 +21,47 @@ def calculate_route_geopy(startlocation, station):
     coords_2 = (station._location.y, station._location.y)
     distance = geopy.distance.geodesic(coords_1, coords_2).m
     return Route(startlocation, station, distance)
-    
 
 def turn_adress_into_coords(location):
     geolocator = Nominatim(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52')
     geolocation = geolocator.geocode(location)
     return geolocation
 
-def get_nearest_stations(routes, quantity):
+def get_nearest_stations(startlocation, stations, quantity):
+    routes = calculate_routes(startlocation, stations)
     routes.sort(key=lambda x: x.distance)
     nearest_stations = []
-    # arr = np.array(routes, dtype)
-    # arr = np.sort(arr, order='distance')
-    for i in range (0, quantity):
-        nearest_stations.append(routes[i].station)
+    amount = 0
+    for route in routes:
+        if route.station.availablebikes.amount_free_bikes != 0:
+            nearest_stations.append(route.station)
+            amount = amount + 1
+        if amount == quantity:
+            break
     return nearest_stations
+
+def get_nearest_stations_with_docs(startlocation, stations, quantity):
+    routes = calculate_routes(startlocation, stations)
+    routes.sort(key=lambda x: x.distance)
+    nearest_stations = []
+    amount = 0
+    for route in routes:
+        if route.station.availablebikes.amount_free_docks != 0:
+            nearest_stations.append(route.station)
+            amount = amount + 1
+        if amount == quantity:
+            break
+    return nearest_stations
+
+def get_best_route(startlocation, stations, destinationlocation):
+    nearest_startstaions=get_nearest_stations(startlocation, stations, 5)
+    nearest_endstations=get_nearest_stations_with_docs(destinationlocation, stations, 5)
+
+    nearest_startstation = get_nearest_stations(destinationlocation, nearest_startstaions, 1)
+    nearest_endstation = get_nearest_stations_with_docs(startlocation, nearest_endstations, 1)
+
+
+    
 
 
 def calculate_route_googlemaps(startlocation, station, travelmode):
