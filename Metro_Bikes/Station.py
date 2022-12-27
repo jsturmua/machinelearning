@@ -1,5 +1,5 @@
 class Station:
-    def __init__(self, location, avaivablebikes, name):
+    def __init__(self, location, availablebikes, name):
         self.name = name
         self._location = location
-        self._avaivablebikes = avaivablebikes
+        self.availablebikes = availablebikes

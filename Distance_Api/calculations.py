@@ -9,37 +9,77 @@ import numpy as np
 import pandas as pd
 
 def calculate_routes(startlocation, stations):
-    geolocation = turn_adress_into_coords(startlocation)
     routes = []
     for station in stations:
-        routes.append(calculate_route_geopy(geolocation, station))
+        routes.append(calculate_route_geopy(startlocation, station))
     return routes
 
 
 def calculate_route_geopy(startlocation, station):
     coords_1 = (startlocation.latitude, startlocation.longitude)
-    coords_2 = (station._location.y, station._location.y)
+    coords_2 = (station._location.y, station._location.x)
     distance = geopy.distance.geodesic(coords_1, coords_2).m
     return Route(startlocation, station, distance)
-    
 
-def turn_adress_into_coords(location):
+def turn_adress_into_geolocation(location):
     geolocator = Nominatim(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52')
     geolocation = geolocator.geocode(location)
     return geolocation
 
-def get_nearest_stations(routes, quantity):
+def get_nearest_stations(startlocation, stations, quantity):
+    routes = calculate_routes(startlocation, stations)
     routes.sort(key=lambda x: x.distance)
     nearest_stations = []
-    # arr = np.array(routes, dtype)
-    # arr = np.sort(arr, order='distance')
-    for i in range (0, quantity):
-        nearest_stations.append(routes[i].station)
+    amount = 0
+    for route in routes:
+        if route.station.availablebikes.amount_free_bikes != 0:
+            nearest_stations.append(route.station)
+            amount = amount + 1
+        if amount == quantity:
+            break
     return nearest_stations
 
+def get_nearest_stations_with_docs(startlocation, stations, quantity):
+    routes = calculate_routes(startlocation, stations)
+    routes.sort(key=lambda x: x.distance)
+    nearest_stations = []
+    amount = 0
+    for route in routes:
+        if route.station.availablebikes.amount_free_docks != 0:
+            nearest_stations.append(route.station)
+            amount = amount + 1
+        if amount == quantity:
+            break
+    return nearest_stations
 
-def calculate_route_googlemaps(startlocation, station, travelmode):
-    gmaps = googlemaps.Client(key='insert_key')
+def get_best_route(startlocation, destinationlocation, stations):
+    nearest_startstations=get_nearest_stations(startlocation, stations, 5)
+    nearest_endstations=get_nearest_stations_with_docs(destinationlocation, stations, 5)
+
+    nearest_startstation = get_nearest_stations(destinationlocation, nearest_startstations, 1)
+    nearest_endstation = get_nearest_stations_with_docs(startlocation, nearest_endstations, 1)
+    stations = [nearest_startstation[0], nearest_endstation[0]]
+    return stations
+
+
+    
+def create_google_maps_route(startlocation, endlocation, stations):
+    gmaps = googlemaps.Client(key='AIzaSyCj8S_a8wIqEiv0gx8XfVtdSJqDXvJb3jo')
+    headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52'}
+    gmaps.requests_kwargs.update({
+            "headers": headers,
+            "timeout": 2,
+        })
+    origins = (startlocation.latitude, startlocation.longitude)
+    destination = (endlocation.latitude, endlocation.longitude)
+    waypoint_stations = []
+    for station in stations:
+        waypoint_stations.append((station._location.y, station._location.x))
+    matrix = gmaps.directions(origins, destination, waypoints=waypoint_stations)
+    return matrix
+
+def calculate_route_googlemaps(startlocation, station, travelmode): #not in use
+    gmaps = googlemaps.Client(key='')
     headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52'}
     gmaps.requests_kwargs.update({
             "headers": headers,
