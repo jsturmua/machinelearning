@@ -1,0 +1,33 @@
+Project Name: Metrobike
+Tool for working with MetroBike
+
+Description
+This is an tool with three different options:
+	1. Find a specified amount of bike stations with bikes available
+	2. Find a specified amount of bike stations with docs available
+	3. Find the best route with Metrobike
+
+Installed modules:
+	- googlemaps
+	- folium
+	- requests
+	- json
+	- geopy
+Installing
+# not available yet
+Executing program:
+	- Run Main.py
+	- Input the startlocation
+	- Choose one of the three options:
+		1. Input the quantity of stations with bikes you want to have
+		2. Input the quantity of stations with docs you want to have
+		3. Input the destinationlocation
+Help_
+Ask me :)
+
+Author:
+Sturm Jonathan
+
+Version History:
+- 0.1:
+	Initial Release

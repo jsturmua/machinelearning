@@ -6,6 +6,10 @@ from Metro_Bikes.Station import Station
         
 
 def parse_json():
+    """
+    Get data of MetroBike website and store this information in the class station
+    return value: Array with stations
+    """
     stations = []
     header = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52'}
     r = requests.get("https://bikeshare.metro.net/stations/json/", headers=header)

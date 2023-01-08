@@ -2,15 +2,35 @@ import sys
 sys.path.append("/usr/local/lib/python3.8/dist-packages")
 import googlemaps
 import folium
-#import geoplot
-#import geoplot.crs as gcrs
+
+
+def visualize_locations(startlocation, stations):
+    """
+    Creates map with waypoints and opens it
+    Return value: void
+    """
+    #Create map with focus on the startlocation
+    m = folium.Map(location=[startlocation.latitude, startlocation.longitude], zoom_start=8)
+    marker = folium.Marker(location=[startlocation.latitude, startlocation.longitude],popup="Start")
+    marker.add_to(m)
+
+    #Loop through all stations and create markers
+    for station in stations:
+        marker = folium.Marker(location=[station._location.y, station._location.x],popup=station.name)
+        marker.add_to(m)
+    #show and save map
+    m.show_in_browser()
+    m.save('map.html')
 
 
 def visualize_route(route):
-    # Erstellen Sie eine leere Folium-Karte und setzen Sie den Anfangspunkt und den Zoom
+    """
+    Creates map with waypoints and opens it
+    Return value: void
+    """
+    # Creation of a folium map
     m = folium.Map(location=[route[0]['legs'][0]['start_location']['lat'], route[0]['legs'][0]['start_location']['lng']], zoom_start=8)
-
-    #Create Markers and Polyline for Waypoints
+    #Create markers and polyline for waypoints
     for i in range(0, len(route[0]['legs'])):
         polyline = folium.PolyLine(
             [[step['start_location']['lat'], step['start_location']['lng']] for step in route[0]['legs'][i]['steps']],
@@ -23,7 +43,7 @@ def visualize_route(route):
         marker.add_to(m)
     marker = folium.Marker(location=[route[0]['legs'][-1]['end_location']['lat'], route[0]['legs'][-1]['end_location']['lng']], popup="Destination")
     marker.add_to(m)
-    # Zeigen Sie die Karte an
+    m.show_in_browser()
     m.save('map.html')
 
 

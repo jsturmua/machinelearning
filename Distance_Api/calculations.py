@@ -4,11 +4,14 @@ import googlemaps
 from Distance_Api.Route import Route
 import geopy.distance
 from geopy.geocoders import Nominatim
-import json
 import numpy as np
 import pandas as pd
 
 def calculate_routes(startlocation, stations):
+    """
+    Calculate all routes between startlocation and stations
+    Return value: Array of routes
+    """
     routes = []
     for station in stations:
         routes.append(calculate_route_geopy(startlocation, station))
@@ -16,17 +19,29 @@ def calculate_routes(startlocation, stations):
 
 
 def calculate_route_geopy(startlocation, station):
+    """
+    Calculates a route between a location and a station
+    Return value: Route
+    """
     coords_1 = (startlocation.latitude, startlocation.longitude)
     coords_2 = (station._location.y, station._location.x)
     distance = geopy.distance.geodesic(coords_1, coords_2).m
     return Route(startlocation, station, distance)
 
 def turn_adress_into_geolocation(location):
+    """
+    Turns adress into an geolocation object
+    Return value: geolocation
+    """
     geolocator = Nominatim(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52')
     geolocation = geolocator.geocode(location)
     return geolocation
 
 def get_nearest_stations(startlocation, stations, quantity):
+    """
+    Sorts the stations by distance and puts specified quantity of stations in an array
+    Return value: Array of stations
+    """
     routes = calculate_routes(startlocation, stations)
     routes.sort(key=lambda x: x.distance)
     nearest_stations = []
@@ -40,6 +55,10 @@ def get_nearest_stations(startlocation, stations, quantity):
     return nearest_stations
 
 def get_nearest_stations_with_docs(startlocation, stations, quantity):
+    """
+    Sorts the stations by distance and puts specified quantity of stations in an array
+    Return value: Array of stations
+    """
     routes = calculate_routes(startlocation, stations)
     routes.sort(key=lambda x: x.distance)
     nearest_stations = []
@@ -53,14 +72,17 @@ def get_nearest_stations_with_docs(startlocation, stations, quantity):
     return nearest_stations
 
 def get_best_route(startlocation, destinationlocation, stations):
-    nearest_startstations=get_nearest_stations(startlocation, stations, 5)
-    nearest_endstations=get_nearest_stations_with_docs(destinationlocation, stations, 5)
-
-    nearest_startstation = get_nearest_stations(destinationlocation, nearest_startstations, 1)
-    nearest_endstation = get_nearest_stations_with_docs(startlocation, nearest_endstations, 1)
+    """
+    Calculates a route between two locations using MetroBike stations
+    Return value: Array of used stations
+    """
+    nearest_startstation=get_nearest_stations(startlocation, stations, 1)
+    nearest_endstation=get_nearest_stations_with_docs(destinationlocation, stations, 1)
+    #Will ich das wirklich machen?
+    #nearest_startstation = get_nearest_stations(destinationlocation, nearest_startstations, 1)
+    #nearest_endstation = get_nearest_stations_with_docs(startlocation, nearest_endstations, 1)
     stations = [nearest_startstation[0], nearest_endstation[0]]
     return stations
-
 
     
 def create_google_maps_route(startlocation, endlocation, stations):
@@ -78,6 +100,7 @@ def create_google_maps_route(startlocation, endlocation, stations):
     matrix = gmaps.directions(origins, destination, waypoints=waypoint_stations)
     return matrix
 
+#optimize old implementation
 def calculate_route_googlemaps(startlocation, station, travelmode): #not in use
     gmaps = googlemaps.Client(key='')
     headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52'}

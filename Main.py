@@ -8,14 +8,12 @@ stations = Stations.parse_json()
 startlocation = "1600 Amphitheatre Parkway, Mountain View, CA"
 startlocation = calculations.turn_adress_into_geolocation(startlocation)
 
-#calculate all routes (startlocations, stations, distances)
-#routes = calculations.calculate_routes(startlocation, stations)
-
 #User has to choose one of the three options
 choice = int(input("1. Find nearest bike station\n2. Find nearest station where docs are avaivable\n3. Find best route in Los Angeles\n"))
 
-# User sets the quantity and the function returns the specified amount of neaerest stations
+# Find nearest stations with available bikes
 if choice == 1:
+    # User sets the quantity and the function returns the specified amount of neaerest stations
     quantity = int(input("How many stations would you like to see?"))
     # all Stations get sorted by distances and the quantity communicates how many station should be outputed
     nearest_stations = calculations.get_nearest_stations(startlocation, stations, quantity)
@@ -23,26 +21,26 @@ if choice == 1:
     print("The nearest stations are these:")
     for station in nearest_stations:
         print(station.name)
+    visualisation.visualize_locations(startlocation, nearest_stations)
 
-# User sets the quantity and the function returns the specified amount of neaerest stations with docs
+# Find the nearest station with available docs
 elif choice == 2:
+    # User sets the quantity and the function returns the specified amount of neaerest stations with docs
     quantity = int(input("How many stations would you like to see?"))
     nearest_stations = calculations.get_nearest_stations_with_docs(startlocation, stations, quantity)
     print("The nearest stations are these:")
     for station in nearest_stations:
         print(station.name)
+    visualisation.visualize_locations(startlocation, nearest_stations)
 
-#User enters a startlocation and and endlocation and the function returns the best route
+#Find the best route
 elif choice == 3:
+    # Enter a destination location
     endlocation = "Irvine, Kalifornien, USA"
     endlocation = calculations.turn_adress_into_geolocation(endlocation)
-    stations = calculations.get_best_route(startlocation, endlocation, stations)
+    stations = calculations.get_best_route(startlocation, endlocation, stations) #calculate the stations of the route
     maps_route = calculations.create_google_maps_route(startlocation, endlocation, stations)
-    visualized_route = visualisation.visualize_route(maps_route)
-    print(startlocation.address)
-    print(stations[0].name)
-    print(stations[1].name)
-    print(endlocation.address)
+    visualisation.visualize_route(maps_route)
 
 
 #User made an invalid input
