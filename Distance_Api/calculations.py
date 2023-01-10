@@ -4,8 +4,7 @@ import googlemaps
 from Distance_Api.Route import Route
 import geopy.distance
 from geopy.geocoders import Nominatim
-import numpy as np
-import pandas as pd
+import geocoder
 
 def calculate_routes(startlocation, stations):
     """
@@ -27,6 +26,14 @@ def calculate_route_geopy(startlocation, station):
     coords_2 = (station._location.y, station._location.x)
     distance = geopy.distance.geodesic(coords_1, coords_2).m
     return Route(startlocation, station, distance)
+
+def get_current_location():
+    """
+    Gets location of user
+    Return value: geolocation
+    """
+    g = geocoder.ip('me')
+    return turn_adress_into_geolocation(g.current_result.address)
 
 def turn_adress_into_geolocation(location):
     """

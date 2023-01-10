@@ -5,8 +5,12 @@ from Distance_Api import calculations, visualisation
 stations = Stations.parse_json()
 
 #Get startlocation of user
-startlocation = "1600 Amphitheatre Parkway, Mountain View, CA"
-startlocation = calculations.turn_adress_into_geolocation(startlocation)
+choice_location= input("Would you like to use your current location? y/n")
+if choice_location == 'y':
+    startlocation = calculations.get_current_location()
+else:
+    startadress = "1600 Amphitheatre Parkway, Mountain View, CA"
+    startlocation = calculations.turn_adress_into_geolocation(startadress)
 
 #User has to choose one of the three options
 choice = int(input("1. Find nearest bike station\n2. Find nearest station where docs are avaivable\n3. Find best route in Los Angeles\n"))
