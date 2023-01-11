@@ -104,7 +104,7 @@ def create_google_maps_route(startlocation, endlocation, stations):
     waypoint_stations = []
     for station in stations:
         waypoint_stations.append((station._location.y, station._location.x))
-    matrix = gmaps.directions(origins, destination, waypoints=waypoint_stations)
+    matrix = gmaps.directions(origins, destination, waypoints=waypoint_stations, mode='bicycling')
     return matrix
 
 #optimize old implementation

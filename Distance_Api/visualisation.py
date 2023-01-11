@@ -2,7 +2,7 @@ import sys
 sys.path.append("/usr/local/lib/python3.8/dist-packages")
 import googlemaps
 import folium
-
+import polyline
 
 def visualize_locations(startlocation, stations):
     """
@@ -31,14 +31,16 @@ def visualize_route(route):
     # Creation of a folium map
     m = folium.Map(location=[route[0]['legs'][0]['start_location']['lat'], route[0]['legs'][0]['start_location']['lng']], zoom_start=8)
     #Create markers and polyline for waypoints
+    points = polyline.decode(route[0]['overview_polyline']['points'])
+    folium.PolyLine(points, color="red", weight=2.5, opacity=1).add_to(m)
     for i in range(0, len(route[0]['legs'])):
-        polyline = folium.PolyLine(
-            [[step['start_location']['lat'], step['start_location']['lng']] for step in route[0]['legs'][i]['steps']],
-            color='blue',
-            weight=2,
-            opacity=1
-            )
-        polyline.add_to(m)
+        # polyline = folium.PolyLine(
+        #     [[step['start_location']['lat'], step['start_location']['lng']] for step in route[0]['legs'][i]['steps']],
+        #     color='blue',
+        #     weight=2,
+        #     opacity=1
+        #     )
+        # polyline.add_to(m)
         marker = folium.Marker(location=[route[0]['legs'][i]['start_location']['lat'], route[0]['legs'][i]['start_location']['lng']], popup=str(i))
         marker.add_to(m)
     marker = folium.Marker(location=[route[0]['legs'][-1]['end_location']['lat'], route[0]['legs'][-1]['end_location']['lng']], popup="Destination")
